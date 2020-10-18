@@ -1,18 +1,22 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { ReactComponent as MediumBeer } from '../icons/beer-medium.svg'
 import { ReactComponent as WeakBeer } from '../icons/beer-weak.svg'
 import { ReactComponent as StrongBeer } from '../icons/beer-strong.svg'
 import { ReactComponent as StrongHops } from '../icons/hops-strong.svg'
 import { ReactComponent as MediumHops } from '../icons/hops-medium.svg'
 import { ReactComponent as WeakHops } from '../icons/hops-weak.svg'
+import { Context } from '../context'
 
 export default function FilterCard({ filter, inputClass, children }) {
-    const [filterData, setFilterData] = useState('all')
+    const { abvFilter } = useContext(Context)
+    const [filterData, setFilterData] = useState({})
 
-    const handleChange = ({ target }) => {
-        const { value } = target
-        setFilterData(value)
+    const handleChange = (e) => {
+        const { name, value } = e.target
+
+        setFilterData({ name, value })
     }
+
     return (
         <div className="card filter-card">
             <div className="filter-container">
@@ -20,7 +24,7 @@ export default function FilterCard({ filter, inputClass, children }) {
                     <p>{children}</p>
                 </div>
                 <div className="filter">
-                    <form id={`filter${filter.toUpperCase()}`} className="filter-form">
+                    <form onChange={abvFilter(filterData)} id={`filter${filter.toUpperCase()}`} className="filter-form">
                         <label htmlFor={`${filter}All`}>
                             <input
                                 type="radio"
@@ -28,7 +32,7 @@ export default function FilterCard({ filter, inputClass, children }) {
                                 className="filter-all"
                                 id={`${filter}All`}
                                 value="all"
-                                onChange={handleChange}
+                                onClick={handleChange}
                             />
                             <span>All</span>
                         </label>
@@ -39,7 +43,7 @@ export default function FilterCard({ filter, inputClass, children }) {
                                 className={inputClass}
                                 id={`${filter}Weak`}
                                 value="weak"
-                                onChange={handleChange}
+                                onClick={handleChange}
                             />
                             {filter === 'abv' ? <WeakBeer /> : <WeakHops />}
 
@@ -51,7 +55,7 @@ export default function FilterCard({ filter, inputClass, children }) {
                                 className={inputClass}
                                 id={`${filter}Medium`}
                                 value="medium"
-                                onChange={handleChange}
+                                onClick={handleChange}
                             />
                             {filter === 'abv' ? <MediumBeer /> : <MediumHops />}
                         </label>
@@ -62,7 +66,7 @@ export default function FilterCard({ filter, inputClass, children }) {
                                 className={inputClass}
                                 id={`${filter}Strong`}
                                 value="strong"
-                                onChange={handleChange}
+                                onClick={handleChange}
                             />
                             {filter === 'abv' ? <StrongBeer /> : <StrongHops />}
                         </label>

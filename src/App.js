@@ -20,7 +20,7 @@ function App() {
         </div>
         <div className="beers">
           {beerData.map(beer => (
-            <BeerCard beer={beer} />
+            <BeerCard key={beer.id} beer={beer} />
           ))}
         </div>
       </div>

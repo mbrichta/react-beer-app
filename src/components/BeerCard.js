@@ -4,7 +4,7 @@ export default function BeerCard({ beer }) {
     return (
         <div className="beer-wrapper card">
             <div className="beer">
-                <img className="beer-img" src={beer.image_url} alt={`${beer.name} beer image`} />
+                <img className="beer-img" src={beer.image_url} alt={`${beer.name} beer`} />
                 <h3>{beer.name}</h3>
                 <span className="beer-info">
                     <span>ABV: {beer.abv}</span>
