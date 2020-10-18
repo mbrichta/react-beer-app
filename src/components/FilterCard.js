@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
-import mediumBeer from '../icons/beer-medium.svg'
-import weakBeer from '../icons/beer-weak.svg'
-import strongBeer from '../icons/beer-strong.svg'
-import strongHops from '../icons/hops-strong.svg'
-import mediumHops from '../icons/hops-medium.svg'
-import weakHops from '../icons/hops-weak.svg'
+import { ReactComponent as MediumBeer } from '../icons/beer-medium.svg'
+import { ReactComponent as WeakBeer } from '../icons/beer-weak.svg'
+import { ReactComponent as StrongBeer } from '../icons/beer-strong.svg'
+import { ReactComponent as StrongHops } from '../icons/hops-strong.svg'
+import { ReactComponent as MediumHops } from '../icons/hops-medium.svg'
+import { ReactComponent as WeakHops } from '../icons/hops-weak.svg'
 
 export default function FilterCard({ filter, inputClass, children }) {
     const [filterData, setFilterData] = useState('all')
@@ -21,7 +21,7 @@ export default function FilterCard({ filter, inputClass, children }) {
                 </div>
                 <div className="filter">
                     <form id={`filter${filter.toUpperCase()}`} className="filter-form">
-                        <label for={`${filter}All`}>
+                        <label htmlFor={`${filter}All`}>
                             <input
                                 type="radio"
                                 name={`filter-${filter}`}
@@ -32,7 +32,7 @@ export default function FilterCard({ filter, inputClass, children }) {
                             />
                             <span>All</span>
                         </label>
-                        <label for={`${filter}Weak`}>
+                        <label htmlFor={`${filter}Weak`}>
                             <input
                                 type="radio"
                                 name={`filter-${filter}`}
@@ -41,9 +41,10 @@ export default function FilterCard({ filter, inputClass, children }) {
                                 value="weak"
                                 onChange={handleChange}
                             />
-                            <img src={filter === "abv" ? weakBeer : weakHops} />
+                            {filter === 'abv' ? <WeakBeer /> : <WeakHops />}
+
                         </label>
-                        <label for={`${filter}Medium`}>
+                        <label htmlFor={`${filter}Medium`}>
                             <input
                                 type="radio"
                                 name={`filter-${filter}`}
@@ -52,9 +53,9 @@ export default function FilterCard({ filter, inputClass, children }) {
                                 value="medium"
                                 onChange={handleChange}
                             />
-                            <img src={filter === "abv" ? mediumBeer : mediumHops} />
+                            {filter === 'abv' ? <MediumBeer /> : <MediumHops />}
                         </label>
-                        <label for={`${filter}Strong`}>
+                        <label htmlFor={`${filter}Strong`}>
                             <input
                                 type="radio"
                                 name={`filter-${filter}`}
@@ -63,7 +64,7 @@ export default function FilterCard({ filter, inputClass, children }) {
                                 value="strong"
                                 onChange={handleChange}
                             />
-                            <img src={filter === "abv" ? strongBeer : strongHops} />
+                            {filter === 'abv' ? <StrongBeer /> : <StrongHops />}
                         </label>
                     </form>
                 </div>

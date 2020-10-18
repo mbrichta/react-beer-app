@@ -9,10 +9,10 @@ export default function Pagination() {
                 </div>
                 <div className="filter">
                     <button id="prevPage" className="page-btn" disabled>
-                        <i class="far fa-caret-square-left"></i>
+                        <i className="far fa-caret-square-left"></i>
                     </button>
-                    <button id="nextPage" className="page-btn" disabled>
-                        <i class="far fa-caret-square-right"></i>
+                    <button id="nextPage" className="page-btn" >
+                        <i className="far fa-caret-square-right"></i>
                     </button>
                 </div>
             </div>
