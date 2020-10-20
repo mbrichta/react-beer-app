@@ -6,15 +6,21 @@ function ContextProvider({ children }) {
 
     const [beerData, setBeerData] = useState([])
     const [options, setOptions] = useState('')
-    const urlBase = 'https://api.punkapi.com/v2/beers'
+    const [page, setPage] = useState(1)
+    const urlBase = 'https://api.punkapi.com/v2/beers?page='
 
     useEffect(() => {
-        const url = urlBase + '?' + options
+        const url = urlBase + page + options
         fetch(url)
             .then(promise => promise.json())
             .then(data => setBeerData(data))
 
-    }, [options])
+    }, [options, page])
+
+    const handlePagination = (num) => {
+        if (num < 0) setPage(prev => prev - 1)
+        else if (num > 0) setPage(prev => prev + 1)
+    }
 
     const abvFilter = (obj) => {
         const { name, value } = obj
@@ -40,7 +46,7 @@ function ContextProvider({ children }) {
     }
 
     return (
-        <Context.Provider value={{ beerData, abvFilter }}>
+        <Context.Provider value={{ beerData, abvFilter, page, handlePagination }}>
             {children}
         </Context.Provider>
     )
