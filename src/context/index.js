@@ -29,16 +29,16 @@ function ContextProvider({ children }) {
                 setOptions('')
                 break
             case "weak":
-                if (name === 'filter-abv') setOptions('abv_lt=4.6')
-                if (name === 'filter-ibu') setOptions('ibu_lt=35')
+                if (name === 'filter-abv') setOptions('&abv_lt=4.6')
+                if (name === 'filter-ibu') setOptions('&ibu_lt=35')
                 break
             case "medium":
-                if (name === 'filter-abv') setOptions('abv_gt=4.5&abv_lt=7.6')
-                if (name === 'filter-ibu') setOptions('ibu_gt=34&ibu_lt=75')
+                if (name === 'filter-abv') setOptions('&abv_gt=4.5&abv_lt=7.6')
+                if (name === 'filter-ibu') setOptions('&ibu_gt=34&ibu_lt=75')
                 break
             case "strong":
-                if (name === 'filter-abv') setOptions('abv_gt=7.5')
-                if (name === 'filter-ibu') setOptions('ibu_gt=74')
+                if (name === 'filter-abv') setOptions('&abv_gt=7.5')
+                if (name === 'filter-ibu') setOptions('&ibu_gt=74')
                 break
             default: setOptions('')
 
