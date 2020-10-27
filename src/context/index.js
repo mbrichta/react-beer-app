@@ -24,6 +24,7 @@ function ContextProvider({ children }) {
 
     const abvFilter = (obj) => {
         const { name, value } = obj
+        console.log(name)
         switch (value) {
             case "all":
                 setOptions('')
