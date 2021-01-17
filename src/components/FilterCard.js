@@ -1,21 +1,22 @@
-import React, { useContext, useState } from 'react'
-import { ReactComponent as MediumBeer } from '../icons/beer-medium.svg'
-import { ReactComponent as WeakBeer } from '../icons/beer-weak.svg'
-import { ReactComponent as StrongBeer } from '../icons/beer-strong.svg'
-import { ReactComponent as StrongHops } from '../icons/hops-strong.svg'
-import { ReactComponent as MediumHops } from '../icons/hops-medium.svg'
-import { ReactComponent as WeakHops } from '../icons/hops-weak.svg'
-import { Context } from '../context'
+import React, { useContext, useState } from 'react';
+import { ReactComponent as MediumBeer } from '../icons/beer-medium.svg';
+import { ReactComponent as WeakBeer } from '../icons/beer-weak.svg';
+import { ReactComponent as StrongBeer } from '../icons/beer-strong.svg';
+import { ReactComponent as StrongHops } from '../icons/hops-strong.svg';
+import { ReactComponent as MediumHops } from '../icons/hops-medium.svg';
+import { ReactComponent as WeakHops } from '../icons/hops-weak.svg';
+import { Context } from '../context';
 
 export default function FilterCard({ filter, inputClass, children }) {
-    const { abvFilter } = useContext(Context)
-    const [filterData, setFilterData] = useState({})
+
+    const { abvFilter } = useContext(Context);
+    const [filterData, setFilterData] = useState({});
 
     const handleChange = (e) => {
         const { name, value } = e.target
 
         setFilterData({ name, value })
-    }
+    };
 
     return (
         <div className="card filter-card">
@@ -74,5 +75,5 @@ export default function FilterCard({ filter, inputClass, children }) {
                 </div>
             </div>
         </div>
-    )
-}
+    );
+};

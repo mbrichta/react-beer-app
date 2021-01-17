@@ -7,7 +7,7 @@ import { Context } from './context';
 
 function App() {
 
-  const { beerData } = useContext(Context)
+  const { beerData } = useContext(Context);
 
   return (
     <div>
@@ -26,6 +26,7 @@ function App() {
       </div>
     </div>
   );
-}
+
+};
 
 export default App;
